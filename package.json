@@ -1,0 +1,25 @@
+{
+  "name": "api-pack-mongoose",
+  "version": "1.0.0",
+  "description": "Mongoos helpers for nodejs-api-pack",
+  "main": "index.js",
+  "license": "MIT",
+  "author": {
+    "name": "Claudinei Machado",
+    "email": "cjchamado@gmail.com",
+    "url": "https://github.com/cjchamado"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/cjchamado/api-pack-koa.git"
+  },
+  "scripts": {
+    "test": "jest"
+  },
+  "devDependencies": {
+    "dotenv": "^8.0.0",
+    "jest": "^24.8.0",
+    "mongoose": "^5.5.7"
+  },
+  "dependencies": {}
+}
