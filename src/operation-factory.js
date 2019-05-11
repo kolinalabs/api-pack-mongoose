@@ -44,6 +44,9 @@ const create = models => {
   models = Array.isArray(models) ? models : [models];
   return models.reduce((operations, model) => {
     operations = operations.concat(createFromModel(model));
+    operations.map(operation => {
+      operation.resource = model;
+    });
     return operations;
   }, []);
 };

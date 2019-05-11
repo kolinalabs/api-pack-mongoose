@@ -6,4 +6,12 @@ const schema = new mongoose.Schema({
   amount: Number
 });
 
+schema.statics.ApiPack = function() {
+  return {
+    pagination: {
+      itemsPerPage: 50
+    }
+  };
+};
+
 module.exports = mongoose.model("Project", schema);

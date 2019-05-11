@@ -1,31 +1,32 @@
+const Paginator = require("./paginator");
+
 module.exports = {
   serializeItem(item) {
-    /**
-     * Custom mongoose document serialization
-     */
     const data = item.toObject();
-
-    delete data.email;
-    delete data.position;
-    delete data.__v;
 
     data.id = data._id;
 
     delete data._id;
+    delete data.email;
+    delete data.position;
+    delete data.__v;
 
     return data;
   },
+  serializeItems(items = []) {
+    return items.reduce((data, item) => {
+      data.push(this.serializeItem(item));
+      return data;
+    }, []);
+  },
   serialize(operation) {
     if (!operation.data) {
-      operation.status = 204;
       return;
     }
-
     if (Array.isArray(operation.data)) {
-      operation.data = operation.data.reduce((data, item) => {
-        data.push(this.serializeItem(item));
-        return data;
-      }, []);
+      operation.data = this.serializeItems(operation.data);
+    } else if (operation.data instanceof Paginator) {
+      operation.data.items = this.serializeItems(operation.data.items);
     } else {
       operation.data = this.serializeItem(operation.data);
     }
