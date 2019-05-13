@@ -1,4 +1,4 @@
 module.exports = {
-  roots: ["./test/loader"],
+  roots: ["./test"],
   testEnvironment: "node"
 };

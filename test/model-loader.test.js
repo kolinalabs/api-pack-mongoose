@@ -1,5 +1,5 @@
-const { Configured, Project } = require("../mock");
-const ModelLoader = require("../../src/loader/model-loader");
+const { Configured, Project } = require("./mock");
+const ModelLoader = require("../src/model-loader");
 
 describe("ApiPack config loader", () => {
   const paginationKeys = [

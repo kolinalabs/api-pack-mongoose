@@ -7,8 +7,6 @@ module.exports = {
     data.id = data._id;
 
     delete data._id;
-    delete data.email;
-    delete data.position;
     delete data.__v;
 
     return data;

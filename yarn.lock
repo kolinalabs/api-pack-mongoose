@@ -285,6 +285,13 @@
     "@types/istanbul-reports" "^1.1.1"
     "@types/yargs" "^12.0.9"
 
+"@kolinalabs/nodejs-api-pack@^1.0.2":
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/@kolinalabs/nodejs-api-pack/-/nodejs-api-pack-1.0.2.tgz#2434c00ea27bfd5a49439e01cdbc64271e7e0d49"
+  integrity sha512-A+03ALymubH3IzLeMyHxlkH+LBt3JpAFOefNbpbW/f3Rxf4R+bf+y3z7imaW2E+wqJ5eb1zTqiPmy/dILm9fZg==
+  dependencies:
+    inflected "^2.0.4"
+
 "@types/babel__core@^7.1.0":
   version "7.1.1"
   resolved "https://registry.yarnpkg.com/@types/babel__core/-/babel__core-7.1.1.tgz#ce9a9e5d92b7031421e1d0d74ae59f572ba48be6"
@@ -1379,6 +1386,11 @@ imurmurhash@^0.1.4:
   version "0.1.4"
   resolved "https://registry.yarnpkg.com/imurmurhash/-/imurmurhash-0.1.4.tgz#9218b9b2b928a238b13dc4fb6b6d576f231453ea"
   integrity sha1-khi5srkoojixPcT7a21XbyMUU+o=
+
+inflected@^2.0.4:
+  version "2.0.4"
+  resolved "https://registry.yarnpkg.com/inflected/-/inflected-2.0.4.tgz#323770961ccbe992a98ea930512e9a82d3d3ef77"
+  integrity sha512-HQPzFLTTUvwfeUH6RAGjD8cHS069mBqXG5n4qaxX7sJXBhVQrsGgF+0ZJGkSuN6a8pcUWB/GXStta11kKi/WvA==
 
 inflight@^1.0.4:
   version "1.0.6"

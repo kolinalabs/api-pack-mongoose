@@ -1,8 +1,8 @@
 require("dotenv").config();
 
-const { Provider } = require("../../src/api-pack");
+const Provider = require("../src/provider");
 const mongoose = require("mongoose");
-const { Task } = require("../mock");
+const { Task } = require("./mock");
 
 const taskData = [
   {
@@ -44,12 +44,15 @@ describe("Provider", () => {
 
   it("getCollection", async () => {
     const operation = {
-      resource: Task
+      resource: Task,
+      context: {
+        query: {}
+      }
     };
 
     await Provider.getCollection(operation);
 
-    expect(operation.data.length).toBe(3);
+    expect(operation.data.items.length).toBe(3);
   });
 
   it("getItem", async () => {

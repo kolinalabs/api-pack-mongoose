@@ -2,8 +2,8 @@ require("dotenv").config();
 
 const mongoose = require("mongoose");
 
-const { Persister } = require("../../src/api-pack");
-const { Project } = require("../mock");
+const Persister = require("../src/persister");
+const { Project } = require("./mock");
 
 const data = {
   title: "My Project",

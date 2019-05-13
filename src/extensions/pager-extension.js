@@ -1,5 +1,5 @@
-const Paginator = require("../api-pack/paginator");
-const ModelLoader = require("../loader/model-loader");
+const Paginator = require("../paginator");
+const ModelLoader = require("../model-loader");
 const BooleanHelper = require("../filters/utils/boolean");
 
 const resolvePagination = operation => {

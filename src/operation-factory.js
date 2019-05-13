@@ -1,4 +1,4 @@
-const { OperationFactory } = require("../../core/src/operation");
+const { OperationFactory } = require("@kolinalabs/nodejs-api-pack");
 
 const createFromScopes = (name, scopes) => {
   return scopes.reduce((operations, scope) => {

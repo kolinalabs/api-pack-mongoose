@@ -1,4 +1,4 @@
-const { FilterExtension, PagerExtension } = require("./../extensions");
+const { FilterExtension, PagerExtension } = require("./extensions");
 
 module.exports = {
   extensions: [FilterExtension, PagerExtension],

@@ -1,5 +1,5 @@
 const Filters = require("../filters");
-const ModelLoader = require("../loader/model-loader");
+const ModelLoader = require("../model-loader");
 
 const FilterExtension = {
   filters: {
