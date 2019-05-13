@@ -1,6 +1,9 @@
 const ApiPackCore = require("@kolinalabs/nodejs-api-pack").ApiPack;
 
-const { Persister, Provider, OperationFactory, Serializer } = require(".");
+const Persister = require("./persister");
+const Provider = require("./provider");
+const OperationFactory = require("./operation-factory");
+const Serializer = require("./serializer");
 
 class ApiPack extends ApiPackCore {
   constructor() {
