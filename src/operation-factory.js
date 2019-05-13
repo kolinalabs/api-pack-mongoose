@@ -52,29 +52,29 @@ const createFromModel = model => {
   let name = model.modelName;
   /** @todo move this function for model-loader.js */
   const config = getApiConfig(model);
+  let operations = [];
 
   if (config.operations) {
     if (Array.isArray(config.operations)) {
-      return createFromScopes(config);
+      operations = createFromScopes(config);
     } else if (typeof config.operations === "object") {
-      return createFromObjectConfig(config);
+      operations = createFromObjectConfig(config);
     }
+  } else {
+    operations = OperationFactory.create(name);
   }
 
-  return OperationFactory.create(name);
+  return operations.map(operation => {
+    operation.resource = model;
+    return operation;
+  });
 };
 
 const create = models => {
   models = Array.isArray(models) ? models : [models];
-  const operations = models.reduce((operations, model) => {
-    operations = operations.concat(createFromModel(model));
-    operations.map(operation => {
-      operation.resource = model;
-    });
-    return operations;
+  return models.reduce((operations, model) => {
+    return operations.concat(createFromModel(model));
   }, []);
-
-  return operations;
 };
 
 module.exports = {
