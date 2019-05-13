@@ -75,4 +75,4 @@ PUT: http://localhost:3003/api/tasks/:id
 DELETE: http://localhost:3003/api/tasks/:id
 ```
 
-[**Other examples**](https://github.com/cjchamado/nodejs-api-pack-samples)
+[**Other examples**](https://github.com/kolinalabs/nodejs-api-pack-samples)
