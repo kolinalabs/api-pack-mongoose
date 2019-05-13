@@ -1,39 +1,63 @@
 const { OperationFactory } = require("@kolinalabs/nodejs-api-pack");
 
-const createFromScopes = (name, scopes) => {
-  return scopes.reduce((operations, scope) => {
-    operations = operations.concat(OperationFactory.create(name, scope));
+const createFromScopes = config => {
+  return config.operations.reduce((operations, scope) => {
+    const operation = OperationFactory.create(config.name, scope);
+
+    if (config.pathPrefix) {
+      operation.path = config.pathPrefix + operation.path;
+    }
+
+    operations.push(operation);
+
     return operations;
   }, []);
 };
 
-const createFromObjectConfig = (name, operations) => {
+const createFromObjectConfig = config => {
   const operationNames = Object.keys(OperationFactory.scopes);
-  const scopedOperations = Object.keys(operations).filter(scope => {
-    const value = operations[scope];
+  config.operations = Object.keys(config.operations).filter(scope => {
+    const value = config.operations[scope];
     return (
       typeof value === "boolean" && value && operationNames.indexOf(scope) >= 0
     );
   });
-  return createFromScopes(name, scopedOperations);
+  return createFromScopes(config);
+};
+
+const getApiConfig = model => {
+  return Object.assign(
+    {
+      name: model.modelName,
+      description: `${model.modelName} resource`,
+      pathPrefix: "",
+      operations: ["paginate", "retrieve", "create", "update"],
+      filters: {},
+      pagination: {
+        enabled: true,
+        clientEnabled: false,
+        itemsPerPage: 30,
+        clientItemsPerPage: false,
+        maxItemsPerPage: null,
+        enabledParameter: "pagination",
+        pageParameter: "page",
+        itemsPerPageParameter: "itemsPerPage"
+      }
+    },
+    model.ApiPack ? model.ApiPack() : {}
+  );
 };
 
 const createFromModel = model => {
   let name = model.modelName;
+  /** @todo move this function for model-loader.js */
+  const config = getApiConfig(model);
 
-  if (model.ApiPack) {
-    const config = model.ApiPack();
-
-    if (config) {
-      if (config.name) name = config.name;
-
-      if (config.operations) {
-        if (Array.isArray(config.operations)) {
-          return createFromScopes(name, config.operations);
-        } else if (typeof config.operations === "object") {
-          return createFromObjectConfig(name, config.operations);
-        }
-      }
+  if (config.operations) {
+    if (Array.isArray(config.operations)) {
+      return createFromScopes(config);
+    } else if (typeof config.operations === "object") {
+      return createFromObjectConfig(config);
     }
   }
 
@@ -42,13 +66,15 @@ const createFromModel = model => {
 
 const create = models => {
   models = Array.isArray(models) ? models : [models];
-  return models.reduce((operations, model) => {
+  const operations = models.reduce((operations, model) => {
     operations = operations.concat(createFromModel(model));
     operations.map(operation => {
       operation.resource = model;
     });
     return operations;
   }, []);
+
+  return operations;
 };
 
 module.exports = {
