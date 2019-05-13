@@ -6,15 +6,17 @@ const OperationFactory = require("./operation-factory");
 const Serializer = require("./serializer");
 
 class ApiPack extends ApiPackCore {
-  constructor() {
+  constructor(models = []) {
     super();
     this.persister(Persister);
     this.provider(Provider);
     this.serializer(Serializer);
+    this.models = models;
+    this.operations = OperationFactory.create(models);
   }
 
-  getOperations(models = []) {
-    return OperationFactory.create(models);
+  routing(handler) {
+    return handler(this, this.operations);
   }
 }
 
