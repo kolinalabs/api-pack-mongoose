@@ -1,3 +1,4 @@
+const ApiPack = require("./api-pack");
 const ModelLoader = require("./model-loader");
 const OperationFactory = require("./operation-factory");
 const Paginator = require("./paginator");
@@ -9,6 +10,7 @@ const Extensions = require("./extensions");
 const Filters = require("./filters");
 
 module.exports = {
+  ApiPack,
   ModelLoader,
   OperationFactory,
   Paginator,

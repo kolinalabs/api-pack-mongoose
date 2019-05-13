@@ -1,5 +1,5 @@
 .env
-api-pack.js
+# api-pack.js
 conn.js
 operations.js
 /api-pack/
