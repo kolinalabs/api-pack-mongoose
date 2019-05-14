@@ -31,7 +31,7 @@ const getApiConfig = model => {
       name: model.modelName,
       description: `${model.modelName} resource`,
       pathPrefix: "",
-      operations: ["paginate", "retrieve", "create", "update"],
+      operations: ["paginate", "create", "retrieve", "update", "remove"],
       filters: {},
       pagination: {
         enabled: true,

@@ -15,6 +15,26 @@ class ApiPack extends ApiPackCore {
     this.operations = OperationFactory.create(models);
   }
 
+  addExtension(extension) {
+    if (typeof extension.apply !== "function") {
+      throw new Error("Invalid extension.");
+    }
+
+    this.getOperationProvider().extensions.push(extension);
+  }
+
+  addFilter(name, filter) {
+    this.getFilterExtension().filters[name] = filter;
+  }
+
+  getFilterExtension() {
+    return (
+      this.getOperationProvider().extensions.filter(extension => {
+        return extension.name === "FilterExtension";
+      })[0] || null
+    );
+  }
+
   routing(handler) {
     return handler(this, this.operations);
   }

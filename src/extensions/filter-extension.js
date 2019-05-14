@@ -2,6 +2,7 @@ const Filters = require("../filters");
 const ModelLoader = require("../model-loader");
 
 const FilterExtension = {
+  name: "FilterExtension",
   filters: {
     boolean: Filters.BooleanFilter,
     date: Filters.DateFilter,
