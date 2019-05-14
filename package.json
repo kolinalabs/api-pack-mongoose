@@ -1,6 +1,6 @@
 {
   "name": "@kolinalabs/api-pack-mongoose",
-  "version": "1.0.9",
+  "version": "1.1.0",
   "description": "Mongoos helpers for nodejs-api-pack",
   "main": "src/index.js",
   "license": "MIT",
