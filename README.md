@@ -2,6 +2,8 @@
 
 Mongoose helpers for nodejs-api-pack
 
+[**Official Documentation**](https://kolinalabs.github.io/nodejs-api-pack-docs/)
+
 # Usage
 
 ## Installation
