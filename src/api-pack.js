@@ -20,7 +20,7 @@ class ApiPack extends ApiPackCore {
       throw new Error("Invalid extension.");
     }
 
-    this.getOperationProvider().extensions.push(extension);
+    this.getOperationProvider().extensions.unshift(extension);
   }
 
   addFilter(name, filter) {
