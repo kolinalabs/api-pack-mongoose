@@ -41,6 +41,8 @@ const resolvePagination = operation => {
 };
 
 const PagerExtension = {
+  name: "PagerExtension",
+  supports: "collection:get",
   apply(query, operation) {
     if (!this.supportsResult(operation)) {
       return;

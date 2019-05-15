@@ -3,6 +3,7 @@ const ModelLoader = require("../model-loader");
 
 const FilterExtension = {
   name: "FilterExtension",
+  supports: "collection:get",
   filters: {
     boolean: Filters.BooleanFilter,
     date: Filters.DateFilter,

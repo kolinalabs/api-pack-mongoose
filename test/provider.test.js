@@ -58,10 +58,15 @@ describe("Provider", () => {
   it("getItem", async () => {
     const operation = {
       resource: Task,
+      type: "item",
+      method: "get",
       identifiers: {
         id: task2._id
       },
-      data: null
+      data: null,
+      context: {
+        query: {}
+      }
     };
 
     await Provider.getItem(operation);
